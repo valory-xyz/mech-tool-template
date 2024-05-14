@@ -34,10 +34,10 @@ Run the demo calculator tool:
 
     python packages/valory/customs/calculator_request/calculator_request.py
 
-Run the OpenAI request tool:
+Run the prediction request tool:
 
     export OPENAI_API_KEY=<your_openai_key>
-    python packages/valory/customs/openai_request/openai_request.py
+    python packages/valory/customs/prediction_request/prediction_request.py
 
 
 ## How to interact with already deployed mech tools

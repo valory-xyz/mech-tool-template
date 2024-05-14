@@ -21,8 +21,24 @@
 from typing import Any, Dict, Optional, Tuple
 import os
 from openai import OpenAI
+import json
 
 client: Optional[OpenAI] = None
+
+
+PREDICTION_PROMPT="""
+You are an LLM inside a multi-agent system that takes in user questions about whether an event is likely to happen or not.
+Answers to those questions should only be Y(for YES) or N (for NO).
+You need to provide a YES/NO answer based on your training data.
+
+Only respond with the format below using curly brackets to encapsulate the variables within a json dictionary object and no other text:
+
+"response": "response"
+
+USER_PROMPT:
+
+{user_prompt}
+"""
 
 
 class OpenAIClientManager:
@@ -63,7 +79,7 @@ def run(**kwargs) -> Tuple[Optional[str], Optional[Dict[str, Any]], Any, Any]:
         # Get the LLM params
         max_tokens = kwargs.get("max_tokens", DEFAULT_OPENAI_SETTINGS["max_tokens"])
         temperature = kwargs.get("temperature", DEFAULT_OPENAI_SETTINGS["temperature"])
-        prompt = kwargs["prompt"]
+        prompt = PREDICTION_PROMPT.replace("{user_prompt}", kwargs["prompt"])
         tool = kwargs["tool"]
         counter_callback = kwargs.get("counter_callback", None)
 
@@ -76,16 +92,7 @@ def run(**kwargs) -> Tuple[Optional[str], Optional[Dict[str, Any]], Any, Any]:
                 None,
             )
 
-        # Check for content moderation
         engine = tool.replace(PREFIX, "")
-        moderation_result = client.moderations.create(input=prompt)
-        if moderation_result.results[0].flagged:
-            return (
-                "Moderation flagged the prompt as in violation of terms.",
-                None,
-                None,
-                None,
-            )
 
         # Call the LLM
         if engine in ENGINES["chat"]:
@@ -120,7 +127,9 @@ if __name__ == "__main__":
     openai_api_key = os.environ["OPENAI_API_KEY"]
     result = run(
         tool="openai-gpt-3.5-turbo",
-        prompt="Create a haiku about autonomous agents",
+        prompt="Will autonomous agents rule the world someday?",
         api_keys={"openai": openai_api_key}
     )
     print(f"Result: {result}")
+    response = json.loads(result[0])
+    print(response)

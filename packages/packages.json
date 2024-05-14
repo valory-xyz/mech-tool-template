@@ -1,7 +1,7 @@
 {
     "dev": {
         "custom/valory/calculator_request/0.1.0": "bafybeihaugcxwfqy7uwrqjvxs2qd7zcqfxqofe4ppwsqwi3nsgrijre6su",
-        "custom/valory/openai_request/0.1.0": "bafybeifrprjbtaq2umhfrsif6efoudieju3axrm4hk25xq7hzky7hotnni"
+        "custom/valory/prediction_request/0.1.0": "bafybeidffebxcgcirpvqcg3iemfhjggicg5t72hvxrdygvitrr3pohkkly"
     },
     "third_party": {}
 }
