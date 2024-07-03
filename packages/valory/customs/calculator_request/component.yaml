@@ -7,7 +7,7 @@ license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   __init__.py: bafybeibbn67pnrrm4qm3n3kbelvbs3v7fjlrjniywmw2vbizarippidtvi
-  calculator_request.py: bafybeigidyh7tah3x3d46uzed5hy3pdsfvlinligneyxk3ug3aar7q2wum
+  calculator_request.py: bafybeicpa3qt7p46hlr6hdr45u4uvejaj5evdlgqp3qeb7tpcurrf3f7he
 fingerprint_ignore_patterns: []
 entry_point: calculator_request.py
 callable: run
