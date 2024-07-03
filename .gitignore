@@ -1,2 +1,8 @@
 
 ethereum_private_key.txt
+
+.env
+
+packages/__pycache__/
+
+*.pyc

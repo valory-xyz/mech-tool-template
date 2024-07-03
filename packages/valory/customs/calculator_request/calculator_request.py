@@ -74,12 +74,3 @@ def run(**kwargs) -> Tuple[Optional[str], Optional[Dict[str, Any]], Any, Any]:
 
     # Response, prompt, transaction, cost
     return str(response), None, None, None
-
-
-if __name__ == "__main__":
-    result = run(
-        tool="add",
-        first_number=17,
-        second_number=5,
-    )
-    print(f"Result: {result}")
