@@ -52,12 +52,23 @@ Create a virtual environment with all development dependencies:
 
 Run the demo calculator tool:
 
-    python packages/valory/customs/calculator_request/calculator_request.py
+    python scripts/run_calculator_request.py
 
-Run the prediction request tool:
+Run the prediction tool:
 
-    export OPENAI_API_KEY=<your_openai_key>
-    python packages/valory/customs/prediction_request/prediction_request.py
+1. Create a free [OpenRouter](https://openrouter.ai/) account and get an API key.
+
+2. Create a `.env` file
+    ```bash
+    cp sample.env .env
+    ```
+
+3. In the `.env` file, fill in `OPENROUTER_API_KEY` with your API key.
+
+4. Run the tool
+    ```bash
+    python scripts/run_prediction_tool.py
+    ```
 
 
 ## How to interact with already deployed mech tools
