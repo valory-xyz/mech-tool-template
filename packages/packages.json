@@ -1,7 +1,7 @@
 {
     "dev": {
-        "custom/valory/calculator_request/0.1.0": "bafybeih3sdyxorn6tewwhie45ruoywdgx53u7llh6pqx7wvkife7z3w77y",
-        "custom/valory/prediction_request/0.1.0": "bafybeicivco5f2q4vtqamxcyxfrxdjtgqcfgcmdijdag2apmzrinkmq2za"
+        "custom/valory/calculator_request/0.1.0": "bafybeiharj3yxo3scejskhoyklup33g7aqunixxobqqm6oxtyog3b6zrui",
+        "custom/valory/prediction_request/0.1.0": "bafybeibzkpfzz5twj33jcykargxpbb5f4tb3oulk3pizochr5rl5miyhvi"
     },
     "third_party": {}
 }

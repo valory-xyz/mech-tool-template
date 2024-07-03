@@ -16,7 +16,7 @@
 #   limitations under the License.
 #
 # ------------------------------------------------------------------------------
-"""Contains the job definitions"""
+"""Contains the tool definitions"""
 
 from typing import Any, Dict, Optional, Tuple
 import requests
