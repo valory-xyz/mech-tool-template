@@ -9,10 +9,6 @@ fingerprint:
   __init__.py: bafybeibbn67pnrrm4qm3n3kbelvbs3v7fjlrjniywmw2vbizarippidtvi
   prediction_request.py: bafybeicxlxswt2aenk3ynf3v7i5dkgoy3jputwn3zk3ilr5uujecxw5q2u
 fingerprint_ignore_patterns: []
-entry_point: openai_request.py
+entry_point: prediction_request.py
 callable: run
-dependencies:
-  openai:
-    version: ==1.11.0
-  tiktoken:
-    version: ==0.5.1
+dependencies: {}
