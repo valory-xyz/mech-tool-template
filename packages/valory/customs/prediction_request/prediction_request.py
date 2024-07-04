@@ -76,13 +76,20 @@ def run(**kwargs) -> Tuple[Optional[str], Optional[Dict[str, Any]], Any, Any]:
             {"role": "user", "content": prompt}
         ]
     })
-
+    # hello!
     response = requests.post(
         url="https://openrouter.ai/api/v1/chat/completions",
         headers={"Authorization": f"Bearer {openrouter_api_key}"},
         data=data
     )
 
-    result = response.json()["choices"][0]["message"]["content"]
+    # API error handling
+    if response.status_code != 200 or "error" in response.json():
+        return error_response(f"Error [{response.status_code}]: {response.json()}")
+
+    try:
+        result = response.json()["choices"][0]["message"]["content"]
+    except KeyError as e:
+        return error_response(str(e))
 
     return result, None, None, None
