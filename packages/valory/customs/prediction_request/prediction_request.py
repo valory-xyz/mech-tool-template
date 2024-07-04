@@ -23,7 +23,7 @@ import requests
 import json
 
 DEFAULT_MODEL = "meta-llama/llama-3-8b-instruct:free"
-
+HTTP_OK = 200
 
 PREDICTION_PROMPT="""
 You are an LLM inside a multi-agent system that takes in user questions about whether an event is likely to happen or not.
@@ -83,6 +83,14 @@ def run(**kwargs) -> Tuple[Optional[str], Optional[Dict[str, Any]], Any, Any]:
         data=data
     )
 
-    result = response.json()["choices"][0]["message"]["content"]
+    # Handle API errors
+    if response.status_code != HTTP_OK or "error" in response.json():
+        return error_response(f"Error [HTTP {response.status_code}]: {response.json()}")
+
+    # Try to load the response to ensure it is json-parseable
+    try:
+        result = response.json()["choices"][0]["message"]["content"]
+    except KeyError as e:
+        return error_response(str(e))
 
     return result, None, None, None

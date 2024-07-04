@@ -23,6 +23,12 @@ from packages.valory.customs.prediction_request.prediction_request import run
 import json
 import os
 
+MODELS = [
+    "meta-llama/llama-3-8b-instruct:free",
+    "google/gemma-2-9b-it:free",
+    "nousresearch/nous-capybara-7b:free",
+]
+
 
 if __name__ == "__main__":
 
@@ -30,12 +36,17 @@ if __name__ == "__main__":
     load_dotenv()
     openrouter_api_key = os.environ["OPENROUTER_API_KEY"]
 
+
     # Call the tool
     result = run(
         prompt="Will autonomous agents play an important role on the economy someday?",
-        api_keys={"openrouter": openrouter_api_key}
+        api_keys={"openrouter": openrouter_api_key},
+        model=MODELS[0]
     )
 
     # Print the result
     print(f"Result: {result}")
-    print(json.loads(result[0]))  # type: ignore
+    try:
+        print(json.loads(result[0]))  # type: ignore
+    except json.decoder.JSONDecodeError:
+        pass
