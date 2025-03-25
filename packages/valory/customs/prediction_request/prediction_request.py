@@ -80,7 +80,8 @@ def run(**kwargs) -> Tuple[Optional[str], Optional[Dict[str, Any]], Any, Any]:
     response = requests.post(
         url="https://openrouter.ai/api/v1/chat/completions",
         headers={"Authorization": f"Bearer {openrouter_api_key}"},
-        data=data
+        data=data,
+        timeout=60
     )
 
     # Handle API errors
